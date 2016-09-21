@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -51,7 +52,27 @@ setContentView(R.layout.activity_main);
         });
         SongAdapter songAdt = new SongAdapter(this, songList);
         songView.setAdapter(songAdt);
+
+        songView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // getting listitem index
+                int songIndex = position;
+
+                // Starting new intent
+             /*   Intent in = new Intent(getApplicationContext(),
+                        AndroidBuildingMusicPlayerActivity.class);
+                // Sending songIndex to PlayerActivity
+                in.putExtra("songIndex", songIndex);
+                setResult(100, in);
+                // Closing PlayListView
+                finish();*/
+            }
+        });
     }
+
     //connect to the service
     private ServiceConnection musicConnection = new ServiceConnection(){
 
@@ -70,7 +91,7 @@ setContentView(R.layout.activity_main);
             musicBound = false;
         }
     };
-    public void getSongList() {
+    public ArrayList<Songs> getSongList() {
         //retrieve song info
         ContentResolver musicResolver = getContentResolver();
         Uri musicUri = android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
@@ -92,6 +113,7 @@ setContentView(R.layout.activity_main);
             }
             while (musicCursor.moveToNext());
         }
+        return songList;
     }
 
     @Override
@@ -105,6 +127,14 @@ setContentView(R.layout.activity_main);
     }
     public void songPicked(View view){
         musicSrv.setSong(Integer.parseInt(view.getTag().toString()));
+        Intent in = new Intent(getApplicationContext(),
+                next.class);
+        // Sending songIndex to PlayerActivity
+      //  in.putExtra("songIndex", songIndex);
+     //   setResult(100, in);
+        // Closing PlayListView
+        startActivity(in);
+        //finish();
         musicSrv.playSong();
     }
     @Override
