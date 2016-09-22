@@ -98,7 +98,7 @@ import adapter.Songs;
                         if(mp!=null){
                             mp.pause();
                             // Changing button image to play button
-                            btnPlay.setImageResource(R.drawable.play);
+                            btnPlay.setImageResource(R.drawable.pause);
                         }
                     }else{
                         // Resume song
@@ -207,15 +207,15 @@ import adapter.Songs;
                     if(isRepeat){
                         isRepeat = false;
                         Toast.makeText(getApplicationContext(), "Repeat is OFF", Toast.LENGTH_SHORT).show();
-                        btnRepeat.setImageResource(R.drawable.play);
+                        btnRepeat.setImageResource(R.drawable.repeat);
                     }else{
                         // make repeat to true
                         isRepeat = true;
                         Toast.makeText(getApplicationContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
                         // make shuffle to false
                         isShuffle = false;
-                        btnRepeat.setImageResource(R.drawable.play);
-                        btnShuffle.setImageResource(R.drawable.play);
+                        btnRepeat.setImageResource(R.drawable.repeat);
+                        btnShuffle.setImageResource(R.drawable.android_music_player_rand);
                     }
                 }
             });
@@ -231,15 +231,15 @@ import adapter.Songs;
                     if(isShuffle){
                         isShuffle = false;
                         Toast.makeText(getApplicationContext(), "Shuffle is OFF", Toast.LENGTH_SHORT).show();
-                        btnShuffle.setImageResource(R.drawable.play);
+                        btnShuffle.setImageResource(R.drawable.android_music_player_rand);
                     }else{
                         // make repeat to true
                         isShuffle= true;
                         Toast.makeText(getApplicationContext(), "Shuffle is ON", Toast.LENGTH_SHORT).show();
                         // make shuffle to false
                         isRepeat = false;
-                        btnShuffle.setImageResource(R.drawable.play);
-                        btnRepeat.setImageResource(R.drawable.play);
+                        btnShuffle.setImageResource(R.drawable.android_music_player_rand);
+                        btnRepeat.setImageResource(R.drawable.repeat);
                     }
                 }
             });
