@@ -127,15 +127,17 @@ setContentView(R.layout.activity_main);
     }
     public void songPicked(View view){
         musicSrv.setSong(Integer.parseInt(view.getTag().toString()));
-        Intent in = new Intent(getApplicationContext(),
+        Intent in = new Intent(MainActivity.this,
                 next.class);
+        in.putExtra("mylist", songList);
+        in.putExtra("songIndex", view.getTag().toString());
         // Sending songIndex to PlayerActivity
       //  in.putExtra("songIndex", songIndex);
      //   setResult(100, in);
         // Closing PlayListView
         startActivity(in);
         //finish();
-        musicSrv.playSong();
+        //musicSrv.playSong();
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

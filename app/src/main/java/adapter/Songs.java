@@ -1,9 +1,11 @@
 package adapter;
 
+import java.io.Serializable;
+
 /**
  * Created by israt.jahan on 9/20/2016.
  */
-public class Songs {
+public class Songs implements Serializable {
     private long id;
     private String title;
     private String artist;
